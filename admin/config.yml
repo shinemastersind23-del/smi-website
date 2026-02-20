@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://shinemastersind.netlify.app
+display_url: https://shinemastersind.netlify.app
+
+collections:
+  - name: "blog"
+    label: "Blog Articles"
+    label_singular: "Blog Article"
+    folder: "_posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "DD MMM YYYY", time_format: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Bus Body Manufacturing", value: "bus-body" }
+          - { label: "Container Logistics", value: "container" }
+          - { label: "Procurement Strategy", value: "procurement" }
+          - { label: "Rubber & PVC", value: "rubber" }
+          - { label: "Automotive", value: "automotive" }
+          - { label: "EV & Future Tech", value: "ev" }
+      - { label: "Read Time", name: "read_time", widget: "string", default: "5 min read" }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Card Emoji", name: "icon", widget: "string", default: "🏭" }
+      - { label: "Introduction", name: "intro", widget: "text" }
+      - { label: "Article Body", name: "body", widget: "markdown" }
