@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shine Masters Industries — Engineering Tomorrow's Industrial World</title>
+<meta name="description" content="Shine Masters Industries — India's premier B2B solutions partner for automotive rubber, PVC profiles, co-extrusion, bus body components, container seals, and industrial fabrication. 25+ years of precision manufacturing.">
+<meta name="keywords" content="industrial rubber profiles, PVC trims, co-extrusion profiles, bus body building, container rubber seals, automotive glass, 3 wheeler components, 4 wheeler parts, industrial manufacturer India">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #020408;
+  --deep: #040c14;
+  --navy: #061020;
+  --electric: #00d4ff;
+  --plasma: #0066ff;
+  --gold: #f5c842;
+  --white: #e8f4ff;
+  --muted: #4a6080;
+  --glass: rgba(0,212,255,0.04);
+  --border: rgba(0,212,255,0.12);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--void);
+  color: var(--white);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CURSOR ── */
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--electric);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(0,212,255,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: all 0.15s ease;
+}
+
+/* ── CANVAS BG ── */
+#bg-canvas {
+  position: fixed; inset: 0;
+  z-index: 0; opacity: 0.6;
+}
+
+/* ── NOISE OVERLAY ── */
+.noise {
+  position: fixed; inset: 0; z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+  background: rgba(2,4,8,0.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img { height: 40px; }
+.nav-logo-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.2;
+}
+.nav-logo-text span { color: var(--electric); display: block; font-size: 10px; letter-spacing: 0.3em; font-weight: 400; }
+
+.nav-links {
+  display: flex; gap: 40px; list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-size: 13px; letter-spacing: 0.08em;
+  text-transform: uppercase; font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--electric); }
+
+.nav-cta {
+  padding: 10px 24px;
+  border: 1px solid var(--electric);
+  border-radius: 2px;
+  color: var(--electric) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+  transition: all 0.3s !important;
+  background: transparent;
+}
+.nav-cta:hover {
+  background: var(--electric) !important;
+  color: var(--void) !important;
+}
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  width: 24px; height: 1px;
+  background: var(--electric);
+  transition: all 0.3s;
+  display: block;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative; z-index: 10;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 120px 8% 80px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--electric);
+  margin-bottom: 40px;
+  background: rgba(0,212,255,0.05);
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--electric);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(0.6); }
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(42px, 7vw, 90px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero h1 .line-accent {
+  background: linear-gradient(90deg, var(--electric) 0%, var(--plasma) 50%, var(--gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  margin-top: 28px;
+  font-size: 16px; color: var(--muted);
+  max-width: 560px; line-height: 1.7;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-divider {
+  width: 1px; height: 40px;
+  background: linear-gradient(180deg, transparent, var(--electric), transparent);
+  margin: 40px auto;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-sectors {
+  display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 50px;
+  animation: fadeUp 0.8s 0.35s ease both;
+}
+.hero-sector {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+}
+.hero-sector::before { content: '//  '; color: var(--electric); }
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.btn-primary {
+  padding: 16px 40px;
+  background: var(--electric);
+  color: var(--void);
+  border: none; border-radius: 2px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-block;
+}
+.btn-primary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 60px rgba(0,212,255,0.4);
+}
+
+.btn-ghost {
+  padding: 16px 40px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-block;
+}
+.btn-ghost:hover {
+  border-color: var(--electric);
+  color: var(--electric);
+}
+
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+  animation: fadeUp 1s 0.8s ease both;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(180deg, var(--electric), transparent);
+  animation: scrollDrop 2s ease-in-out infinite;
+}
+@keyframes scrollDrop {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  position: relative; z-index: 10;
+  padding: 0 8%;
+  margin-bottom: 120px;
+}
+.stats-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(0,212,255,0.02);
+  backdrop-filter: blur(10px);
+}
+.stat-item {
+  padding: 40px 32px;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(0,212,255,0.05); }
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 52px; font-weight: 800;
+  color: var(--electric);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: 12px; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ── SECTIONS ── */
+.section {
+  position: relative; z-index: 10;
+  padding: 120px 8%;
+}
+
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--electric); margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.section-title .accent {
+  background: linear-gradient(90deg, var(--electric), var(--plasma));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-sub {
+  margin-top: 20px; color: var(--muted);
+  font-size: 16px; line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ── PRODUCTS GRID ── */
+.products-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.product-card {
+  background: var(--deep);
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: background 0.4s;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+
+.product-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--electric), var(--plasma));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover { background: var(--navy); }
+.product-card:hover::before { opacity: 1; }
+.product-card:hover::after { transform: scaleX(1); }
+
+.product-card:hover .product-card-arrow {
+  transform: translate(4px, -4px);
+  opacity: 1;
+}
+
+.product-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--electric); opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.product-icon {
+  font-size: 32px; margin-bottom: 20px;
+  display: block;
+}
+
+.product-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 700;
+  line-height: 1.3; margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.product-card-desc {
+  font-size: 13px; color: var(--muted);
+  line-height: 1.6;
+}
+
+.product-card-arrow {
+  position: absolute; top: 32px; right: 32px;
+  width: 20px; height: 20px;
+  color: var(--electric);
+  opacity: 0; transition: all 0.3s;
+  font-size: 20px;
+}
+
+/* ── WHY US ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.why-list {
+  display: flex; flex-direction: column; gap: 40px;
+}
+
+.why-item {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.why-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.why-icon {
+  width: 48px; height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  background: rgba(0,212,255,0.05);
+}
+
+.why-text h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px; font-weight: 700;
+  margin-bottom: 8px;
+}
+.why-text p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+.why-visual {
+  position: relative;
+}
+.why-visual-inner {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 48px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.04), transparent);
+  position: relative; overflow: hidden;
+}
+.why-visual-inner::before {
+  content: 'SMI';
+  position: absolute; bottom: -20px; right: -10px;
+  font-family: 'Syne', sans-serif;
+  font-size: 140px; font-weight: 800;
+  color: rgba(0,212,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.cert-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.cert-item {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.cert-item:hover { border-color: rgba(0,212,255,0.4); }
+.cert-item .cert-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px; font-weight: 800;
+  color: var(--electric);
+}
+.cert-item .cert-label {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── INDUSTRIES ── */
+.industries-row {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-top: 60px;
+}
+.industry-chip {
+  padding: 12px 24px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 13px; font-weight: 500;
+  color: var(--muted);
+  transition: all 0.3s;
+  cursor: default;
+}
+.industry-chip:hover {
+  border-color: var(--electric);
+  color: var(--electric);
+  background: rgba(0,212,255,0.05);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.testi-card {
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: rgba(0,212,255,0.02);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.testi-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-4px);
+}
+.testi-card::before {
+  content: '"';
+  position: absolute; top: 16px; right: 24px;
+  font-size: 80px; color: var(--electric); opacity: 0.08;
+  font-family: Georgia, serif; line-height: 1;
+}
+
+.testi-stars {
+  display: flex; gap: 4px; margin-bottom: 20px;
+}
+.star { color: var(--gold); font-size: 14px; }
+
+.testi-text {
+  font-size: 15px; line-height: 1.7; color: var(--white);
+  margin-bottom: 28px;
+}
+
+.testi-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--electric), var(--plasma));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
+  color: var(--void);
+}
+.testi-info strong {
+  display: block; font-size: 14px; font-weight: 600;
+}
+.testi-info span { font-size: 12px; color: var(--muted); }
+
+/* ── CTA SECTION ── */
+.cta-section {
+  position: relative; z-index: 10;
+  padding: 0 8% 120px;
+}
+.cta-inner {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 80px;
+  background: linear-gradient(135deg, rgba(0,100,255,0.08), rgba(0,212,255,0.04), transparent);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-inner::before {
+  content: '';
+  position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(circle, rgba(0,212,255,0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.cta-sub {
+  font-size: 16px; color: var(--muted);
+  margin-bottom: 40px;
+}
+.cta-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+.cta-contact {
+  margin-top: 40px;
+  display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+}
+.contact-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--muted);
+}
+.contact-item a { color: var(--electric); text-decoration: none; }
+.contact-item a:hover { text-decoration: underline; }
+
+/* ── BLOG PREVIEW ── */
+.blog-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+  margin-top: 60px;
+}
+.blog-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.3s, transform 0.3s;
+  background: rgba(0,212,255,0.01);
+}
+.blog-card:hover {
+  border-color: rgba(0,212,255,0.35);
+  transform: translateY(-4px);
+}
+.blog-card-img {
+  height: 180px;
+  background: linear-gradient(135deg, var(--navy), var(--deep));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.blog-card-body { padding: 28px; }
+.blog-tag {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--electric); margin-bottom: 12px;
+}
+.blog-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px; font-weight: 700;
+  line-height: 1.4; margin-bottom: 12px;
+}
+.blog-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.blog-card-meta {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--muted);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 10;
+  padding: 80px 8% 40px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand img { height: 36px; margin-bottom: 20px; display: block; }
+.footer-brand p { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 280px; }
+
+.footer-col h5 {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--electric); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  font-size: 13px; color: var(--muted);
+  text-decoration: none; transition: color 0.3s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 40px; border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--muted);
+  flex-wrap: wrap; gap: 16px;
+}
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(2,4,8,0.97);
+  backdrop-filter: blur(30px);
+  flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 40px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px; font-weight: 700;
+  color: var(--white); text-decoration: none;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--electric); }
+.mobile-close {
+  position: absolute; top: 24px; right: 5%;
+  background: none; border: none; color: var(--white);
+  font-size: 28px; cursor: pointer;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 900px) {
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .why-grid { grid-template-columns: 1fr; gap: 40px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .cta-inner { padding: 48px 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: 38px; }
+  .hero-sectors { gap: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://i.ibb.co/5hyxn26G/50212-666-375.png" alt="SMI">
+    <div class="nav-logo-text">Shine Masters<span>Industries</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#products" onclick="closeMobile()">Products</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">India's Premier B2B Industrial Partner</div>
+  <h1>
+    Engineering the<br>
+    <span class="line-accent">Backbone of Industry</span>
+  </h1>
+  <p class="hero-sub">
+    From automotive rubber to precision PVC profiles — Shine Masters Industries supplies the components that keep commercial vehicles, fabrication plants, and transportation systems moving.
+  </p>
+  <div class="hero-divider"></div>
+  <div class="hero-sectors">
+    <span class="hero-sector">Automotive</span>
+    <span class="hero-sector">Bus Body</span>
+    <span class="hero-sector">Container</span>
+    <span class="hero-sector">Fabrication</span>
+    <span class="hero-sector">3 & 4 Wheeler</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Request Industrial Quote</a>
+    <a href="#products" class="btn-ghost">Explore Products</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num" data-target="25">0</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="500">0</div>
+      <div class="stat-label">B2B Clients Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="8">0</div>
+      <div class="stat-label">Product Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="2000">0</div>
+      <div class="stat-label">Units Delivered</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-eyebrow reveal">Product Ecosystem</div>
+      <h2 class="section-title reveal">Complete Industrial<br><span class="accent">Solutions Suite</span></h2>
+    </div>
+    <p class="section-sub reveal" style="margin-top:0;">Click any product to explore full specifications, applications, and download the catalogue.</p>
+  </div>
+  <div class="products-grid reveal">
+
+    <a href="product-pvc-trims.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">01</div>
+      <span class="product-icon">🧱</span>
+      <div class="product-card-title">PVC Trims</div>
+      <div class="product-card-desc">High-grade PVC edge trims for automotive and industrial finishing applications.</div>
+    </a>
+
+    <a href="product-bus-body.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">02</div>
+      <span class="product-icon">🚌</span>
+      <div class="product-card-title">Bus Body Building Profiles</div>
+      <div class="product-card-desc">Engineered profiles for commercial bus body construction and reinforcement.</div>
+    </a>
+
+    <a href="product-coextrusion.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">03</div>
+      <span class="product-icon">⚙️</span>
+      <div class="product-card-title">Co-Extrusion Profiles</div>
+      <div class="product-card-desc">Multi-material co-extruded profiles combining rigidity and flexibility.</div>
+    </a>
+
+    <a href="product-container-seals.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">04</div>
+      <span class="product-icon">📦</span>
+      <div class="product-card-title">Container Rubber Seals</div>
+      <div class="product-card-desc">Heavy-duty sealing solutions for shipping containers and cargo units.</div>
+    </a>
+
+    <a href="product-upvc-rubber.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">05</div>
+      <span class="product-icon">🔩</span>
+      <div class="product-card-title">UPVC & Rubber Profiles</div>
+      <div class="product-card-desc">Durable unplasticized PVC and rubber extrusions for diverse industrial use.</div>
+    </a>
+
+    <a href="product-aluminium-rubber.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">06</div>
+      <span class="product-icon">🔧</span>
+      <div class="product-card-title">Aluminium Rubber Profiles</div>
+      <div class="product-card-desc">Composite aluminium-rubber profiles for precision automotive applications.</div>
+    </a>
+
+    <a href="product-3wheeler.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">07</div>
+      <span class="product-icon">🛺</span>
+      <div class="product-card-title">3 Wheeler Components</div>
+      <div class="product-card-desc">Complete rubber and PVC component solutions for 3-wheeler commercial vehicles.</div>
+    </a>
+
+    <a href="product-4wheeler.html" class="product-card">
+      <div class="product-card-arrow">↗</div>
+      <div class="product-num">08</div>
+      <span class="product-icon">🚗</span>
+      <div class="product-card-title">4 Wheeler Catalogue</div>
+      <div class="product-card-desc">Full-range automotive rubber and PVC solutions for 4-wheeler manufacturers.</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="about" style="padding-top:0;">
+  <div class="section-eyebrow reveal">Why Choose SMI</div>
+  <h2 class="section-title reveal">Built on Precision.<br><span class="accent">Proven by Industry.</span></h2>
+  <div class="why-grid reveal">
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-icon">🏭</div>
+        <div class="why-text">
+          <h4>State-of-the-Art Manufacturing</h4>
+          <p>Our production facilities use advanced extrusion technology to deliver consistent tolerances across every batch, every time.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔬</div>
+        <div class="why-text">
+          <h4>Rigorous Quality Control</h4>
+          <p>Each product undergoes multi-stage QC testing — from raw material sourcing to final dispatch — ensuring zero-compromise performance.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div class="why-text">
+          <h4>On-Time, Every Time</h4>
+          <p>25+ years of supply chain expertise means your production lines never stop. We deliver on schedule, at scale.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤝</div>
+        <div class="why-text">
+          <h4>Dedicated B2B Partnership</h4>
+          <p>We're not just a vendor. Our team works alongside yours — from spec development to long-term procurement planning.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="why-visual-inner">
+        <div class="cert-grid">
+          <div class="cert-item">
+            <div class="cert-num">25+</div>
+            <div class="cert-label">Years Active</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-num">500+</div>
+            <div class="cert-label">Clients</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-num">8</div>
+            <div class="cert-label">Categories</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-num">Pan-IN</div>
+            <div class="cert-label">Coverage</div>
+          </div>
+        </div>
+      </div>
+      <div class="industries-row">
+        <div class="industry-chip">Automotive OEM</div>
+        <div class="industry-chip">Bus Fabricators</div>
+        <div class="industry-chip">Container Logistics</div>
+        <div class="industry-chip">3W Manufacturers</div>
+        <div class="industry-chip">Body Builders</div>
+        <div class="industry-chip">Fleet Operators</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding-top:0;">
+  <div class="section-eyebrow reveal">Client Voices</div>
+  <h2 class="section-title reveal">Trusted by <span class="accent">Industry Leaders</span></h2>
+  <div class="testimonials-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testi-text">"Premium quality rubber profiles with consistent delivery timelines. Shine Masters has been a backbone supplier for our bus body division for over 6 years."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div class="testi-info">
+          <strong>Rajesh Kumar</strong>
+          <span>Procurement Head, Bus Body Manufacturer</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testi-text">"Excellent fabrication support. Their co-extrusion profiles meet our exact dimensional tolerances. A dependable partner for our automotive glass division."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SP</div>
+        <div class="testi-info">
+          <strong>Sneha Patel</strong>
+          <span>Operations Manager, Auto Fabrication Pvt. Ltd.</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testi-text">"Highly professional team. The container rubber seals we source from SMI have significantly reduced our cargo damage incidents. Outstanding industrial partnership."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AM</div>
+        <div class="testi-info">
+          <strong>Arvind Mehta</strong>
+          <span>Director, Logistics & Container Solutions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section class="section" style="padding-top:0;">
+  <div class="products-header">
+    <div>
+      <div class="section-eyebrow reveal">Industry Intelligence</div>
+      <h2 class="section-title reveal">From the <span class="accent">SMI Knowledge Hub</span></h2>
+    </div>
+    <a href="blog.html" class="btn-ghost reveal" style="margin-bottom:0;">View All Articles →</a>
+  </div>
+  <div class="blog-grid reveal">
+    <a href="blog-article-1.html" class="blog-card">
+      <div class="blog-card-img">🚌</div>
+      <div class="blog-card-body">
+        <div class="blog-tag">Bus Body</div>
+        <div class="blog-card-title">Why Co-Extrusion Profiles Are Replacing Traditional Seals in Modern Bus Designs</div>
+        <div class="blog-card-desc">An in-depth look at how multi-material extrusion is transforming commercial vehicle body construction across India.</div>
+        <div class="blog-card-meta">
+          <span>Jan 2026</span>
+          <span>·</span>
+          <span>5 min read</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-article-2.html" class="blog-card">
+      <div class="blog-card-img">📦</div>
+      <div class="blog-card-body">
+        <div class="blog-tag">Container Logistics</div>
+        <div class="blog-card-title">The Hidden Cost of Poor Container Seals — And How to Fix It</div>
+        <div class="blog-card-desc">Cargo damage from failing seals costs the logistics industry billions. Here's what procurement managers need to know.</div>
+        <div class="blog-card-meta">
+          <span>Feb 2026</span>
+          <span>·</span>
+          <span>4 min read</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-article-3.html" class="blog-card">
+      <div class="blog-card-img">🏭</div>
+      <div class="blog-card-body">
+        <div class="blog-tag">Procurement</div>
+        <div class="blog-card-title">How to Evaluate Industrial Rubber Suppliers: A 7-Point B2B Checklist</div>
+        <div class="blog-card-desc">Not all rubber profile suppliers are equal. Use this framework to select partners who deliver quality at scale.</div>
+        <div class="blog-card-meta">
+          <span>Feb 2026</span>
+          <span>·</span>
+          <span>6 min read</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="cta-inner reveal">
+    <div class="section-eyebrow" style="margin-bottom:16px;">Start a Partnership</div>
+    <div class="cta-title">Let's Build the<br><span style="background:linear-gradient(90deg,var(--electric),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Future Together</span></div>
+    <p class="cta-sub">Request a quote, schedule a call, or download a product catalogue. Our team responds within 24 hours.</p>
+    <div class="cta-actions">
+      <a href="mailto:shinemastersind23@gmail.com" class="btn-primary">Request a Quote</a>
+      <a href="#products" class="btn-ghost">Download Catalogue</a>
+    </div>
+    <div class="cta-contact">
+      <div class="contact-item">
+        <span>📧</span>
+        <a href="mailto:shinemastersind23@gmail.com">shinemastersind23@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>📞</span>
+        <a href="tel:+919637702555">+91 96377 02555</a>
+      </div>
+      <div class="contact-item">
+        <span>📞</span>
+        <a href="tel:+918087573848">+91 80875 73848</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://i.ibb.co/5hyxn26G/50212-666-375.png" alt="SMI">
+      <p>Shine Masters Industries — India's all-around B2B solutions partner for automotive, rubber, PVC, and industrial profile manufacturing.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="product-pvc-trims.html">PVC Trims</a></li>
+        <li><a href="product-bus-body.html">Bus Body Profiles</a></li>
+        <li><a href="product-coextrusion.html">Co-Extrusion</a></li>
+        <li><a href="product-container-seals.html">Container Seals</a></li>
+        <li><a href="product-upvc-rubber.html">UPVC & Rubber</a></li>
+        <li><a href="product-aluminium-rubber.html">Aluminium Rubber</a></li>
+        <li><a href="product-3wheeler.html">3 Wheeler</a></li>
+        <li><a href="product-4wheeler.html">4 Wheeler</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About SMI</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:shinemastersind23@gmail.com">shinemastersind23@gmail.com</a></li>
+        <li><a href="tel:+919637702555">+91 96377 02555</a></li>
+        <li><a href="tel:+918087573848">+91 80875 73848</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Shine Masters Industries — Precision. Performance. Reliability.</span>
+    <span>Made with precision in India 🇮🇳</span>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR ──
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  dot.style.left = e.clientX + 'px';
+  dot.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    ring.style.width = '60px'; ring.style.height = '60px';
+    ring.style.borderColor = 'rgba(0,212,255,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.width = '36px'; ring.style.height = '36px';
+    ring.style.borderColor = 'rgba(0,212,255,0.5)';
+  });
+});
+
+// ── CANVAS NEBULA BG ──
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], orbs = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize(); window.addEventListener('resize', resize);
+
+// Create nebula orbs
+for (let i = 0; i < 5; i++) {
+  orbs.push({
+    x: Math.random() * W, y: Math.random() * H,
+    r: 200 + Math.random() * 300,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    hue: [200, 220, 240, 200, 210][i],
+    alpha: 0.04 + Math.random() * 0.06
+  });
+}
+
+// Particles
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * W, y: Math.random() * H,
+    r: Math.random() * 1.5,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: -0.1 - Math.random() * 0.3,
+    alpha: Math.random() * 0.6
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  // Nebula orbs
+  orbs.forEach(o => {
+    o.x += o.vx; o.y += o.vy;
+    if (o.x < -o.r) o.x = W + o.r;
+    if (o.x > W + o.r) o.x = -o.r;
+    if (o.y < -o.r) o.y = H + o.r;
+    if (o.y > H + o.r) o.y = -o.r;
+    const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+    g.addColorStop(0, `hsla(${o.hue},100%,60%,${o.alpha})`);
+    g.addColorStop(1, 'transparent');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+  // Particles
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.y < -5) { p.y = H + 5; p.x = Math.random() * W; }
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,212,255,${p.alpha})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// ── COUNTERS ──
+function animateCounter(el) {
+  const target = +el.dataset.target;
+  const suffix = target >= 2000 ? '+' : (target === 8 ? '' : '+');
+  let count = 0;
+  const step = target / 60;
+  const timer = setInterval(() => {
+    count = Math.min(count + step, target);
+    el.textContent = Math.floor(count) + suffix;
+    if (count >= target) clearInterval(timer);
+  }, 20);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+});
+document.querySelectorAll('.stat-num[data-target]').forEach(c => counterObs.observe(c));
+
+// ── NETLIFY IDENTITY REDIRECT ──
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+
+// ── MOBILE MENU ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+</script>
+</body>
+</html>
