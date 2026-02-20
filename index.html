@@ -1339,22 +1339,40 @@ function closeMobile() {
 </script>
 
 <script>
-// Secret portal trigger — 5 rapid clicks on logo
+// Secret portal trigger — 5 rapid clicks on logo image only
 (function() {
   let clicks = 0, timer;
-  const logo = document.getElementById('navLogo');
-  if (!logo) return;
-  logo.addEventListener('click', function(e) {
-    e.preventDefault();
-    clicks++;
-    clearTimeout(timer);
-    if (clicks >= 5) {
-      clicks = 0;
-      window.location.href = '/smi-portal-9k2m.html';
-    }
-    timer = setTimeout(() => { clicks = 0; }, 1500);
-    // Only navigate normally if not in the click sequence
-    if (clicks === 0) window.location.href = '/';
+  // Wait for DOM ready
+  window.addEventListener('DOMContentLoaded', function() {
+    const logo = document.getElementById('navLogo');
+    if (!logo) return;
+
+    logo.addEventListener('click', function(e) {
+      // Always block default so page doesn't navigate mid-sequence
+      e.preventDefault();
+      e.stopPropagation();
+
+      clicks++;
+      clearTimeout(timer);
+
+      if (clicks >= 5) {
+        clicks = 0;
+        window.location.href = '/smi-portal-9k2m.html';
+        return;
+      }
+
+      // Visual feedback — subtle flash on logo
+      const img = document.getElementById('logoImg');
+      if (img) {
+        img.style.opacity = '0.5';
+        setTimeout(() => img.style.opacity = '1', 100);
+      }
+
+      // Reset counter if user stops clicking for 2 seconds
+      timer = setTimeout(() => {
+        clicks = 0;
+      }, 2000);
+    });
   });
 })();
 </script>
