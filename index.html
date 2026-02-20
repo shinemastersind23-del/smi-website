@@ -761,8 +761,8 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="https://i.ibb.co/5hyxn26G/50212-666-375.png" alt="SMI">
+  <a href="index.html" class="nav-logo" id="navLogo">
+    <img src="https://i.ibb.co/5hyxn26G/50212-666-375.png" alt="SMI" id="logoImg">
     <div class="nav-logo-text">Shine Masters<span>Industries</span></div>
   </a>
   <ul class="nav-links">
@@ -1146,7 +1146,28 @@ footer {
   </div>
   <div class="footer-bottom">
     <span>© 2026 Shine Masters Industries — Precision. Performance. Reliability.</span>
-    <span>Made with precision in India 🇮🇳</span>
+    <span style="display:flex;align-items:center;gap:20px;">
+      <span>Made with precision in India 🇮🇳</span>
+      <span onclick="adminAccess()" style="color:var(--muted);font-size:11px;cursor:pointer;opacity:0.3;transition:opacity 0.3s;letter-spacing:0.1em;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.3'">Admin</span>
+    </span>
+  </div>
+
+  <!-- ADMIN ACCESS MODAL -->
+  <div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(2,4,8,0.95);backdrop-filter:blur(20px);z-index:99999;align-items:center;justify-content:center;">
+    <div style="background:#040c14;border:1px solid rgba(0,212,255,0.12);border-radius:8px;padding:48px;width:90%;max-width:400px;position:relative;">
+      <button onclick="closeAdmin()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#4a6080;font-size:22px;cursor:pointer;">✕</button>
+      <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#00d4ff;margin-bottom:12px;">Staff Access</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px;">Blog Editor</div>
+      <p style="font-size:13px;color:#4a6080;margin-bottom:28px;line-height:1.5;">Enter your access passphrase to open the SMI content editor.</p>
+      <div style="margin-bottom:16px;">
+        <input type="password" id="adminPass" placeholder="Enter passphrase..." onkeydown="if(event.key==='Enter')checkAdmin()"
+          style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(0,212,255,0.12);border-radius:4px;padding:13px 16px;color:#e8f4ff;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;">
+      </div>
+      <div id="adminError" style="display:none;color:#ff4466;font-size:13px;margin-bottom:12px;">Incorrect passphrase. Try again.</div>
+      <button onclick="checkAdmin()" style="width:100%;padding:14px;background:#00d4ff;color:#020408;border:none;border-radius:4px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;">
+        Open Editor →
+      </button>
+    </div>
   </div>
 </footer>
 
@@ -1275,6 +1296,38 @@ if (window.netlifyIdentity) {
   });
 }
 
+// ── ADMIN ACCESS ──
+// Change 'shinemasters2026' to your own secret passphrase
+const ADMIN_PASSPHRASE = 'shinemasters2026';
+
+function adminAccess() {
+  const modal = document.getElementById('adminModal');
+  modal.style.display = 'flex';
+  document.getElementById('adminPass').value = '';
+  document.getElementById('adminError').style.display = 'none';
+  setTimeout(() => document.getElementById('adminPass').focus(), 100);
+}
+
+function closeAdmin() {
+  document.getElementById('adminModal').style.display = 'none';
+}
+
+function checkAdmin() {
+  const pass = document.getElementById('adminPass').value;
+  if (pass === ADMIN_PASSPHRASE) {
+    window.location.href = '/blog-editor.html';
+  } else {
+    document.getElementById('adminError').style.display = 'block';
+    document.getElementById('adminPass').value = '';
+    document.getElementById('adminPass').focus();
+  }
+}
+
+// Close admin modal on overlay click
+document.getElementById('adminModal').addEventListener('click', function(e) {
+  if (e.target === this) closeAdmin();
+});
+
 // ── MOBILE MENU ──
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.add('open');
@@ -1284,5 +1337,27 @@ function closeMobile() {
   document.getElementById('mobileMenu').classList.remove('open');
 }
 </script>
+
+<script>
+// Secret portal trigger — 5 rapid clicks on logo
+(function() {
+  let clicks = 0, timer;
+  const logo = document.getElementById('navLogo');
+  if (!logo) return;
+  logo.addEventListener('click', function(e) {
+    e.preventDefault();
+    clicks++;
+    clearTimeout(timer);
+    if (clicks >= 5) {
+      clicks = 0;
+      window.location.href = '/smi-portal-9k2m.html';
+    }
+    timer = setTimeout(() => { clicks = 0; }, 1500);
+    // Only navigate normally if not in the click sequence
+    if (clicks === 0) window.location.href = '/';
+  });
+})();
+</script>
+
 </body>
 </html>
