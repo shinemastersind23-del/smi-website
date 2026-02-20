@@ -8,4 +8,4 @@ Allow: /
 Disallow: /smi-portal-9k2m.html
 Disallow: /_posts/
 
-Sitemap: https://shinemastersind.netlify.app/sitemap.xml
+Sitemap: https://shinemastersin.netlify.app/sitemap.xml
