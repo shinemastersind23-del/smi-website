@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UPVC & Rubber Profiles — Shine Masters Industries</title>
-<meta name="description" content="Durable unplasticized PVC and rubber extrusion profiles for industrial, architectural, and automotive applications. From Shine Masters Industries.">
+<title>UPVC & Rubber Profiles | Industrial Extrusions | Shine Masters Industries</title>
+<meta name="keywords" content="UPVC profiles India, rubber extrusion profiles, UPVC rubber manufacturer, industrial rubber profiles, EPDM rubber profile supplier, window rubber seal India">
+<meta name="description" content="Lead-free UPVC and rubber extrusion profiles for windows, doors, vehicles, and industrial panels. EPDM, neoprene, silicone grades. Custom profiles for OEM manufacturers.">
+<link rel="canonical" href="https://shinemastersin.netlify.app/product-upvc-rubber.html">
+<meta property="og:title" content="UPVC & Rubber Profiles Manufacturer India | Window Door Industrial Seals | SMI">
+<meta property="og:description" content="UPVC profiles and rubber extrusions for windows, doors, glazing, and industrial applications. EPDM, neoprene, silicone available. Shine Masters Industries India.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shinemastersin.netlify.app/product-upvc-rubber.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -137,7 +143,7 @@ footer a { font-size:12px; color:var(--electric); text-decoration:none; }
   <div class="prod-breadcrumb"><a href="index.html">Home</a> / <a href="index.html#products">Products</a> / UPVC & Rubber Profiles</div>
   <div class="prod-num">Product 05 / 08</div>
   <h1 class="prod-title">UPVC &amp; <span class="accent">Rubber Profiles</span></h1>
-  <p class="prod-tagline">Durable unplasticized PVC and rubber extrusion profiles delivering structural rigidity and weather sealing performance for industrial, architectural, and automotive applications.</p>
+  <p class="prod-tagline">Rigid UPVC profiles for structural framing and rubber seals for weatherproofing — supplied together from one source, across windows, doors, glazing, and industrial applications.</p>
   <div class="prod-actions">
     <button class="btn-primary" onclick="openModal()">📥 Download Catalogue</button>
     <a href="index.html#contact" class="btn-ghost">Request a Quote →</a>
@@ -149,9 +155,9 @@ footer a { font-size:12px; color:var(--electric); text-decoration:none; }
   <div class="prod-grid">
     <div class="prod-overview">
       <h3>Product Overview</h3>
-      <p>UPVC (Unplasticized Polyvinyl Chloride) profiles represent a step up in rigidity and dimensional stability over standard PVC formulations. Shine Masters Industries' UPVC extrusions are used where structural integrity is critical — window and door framing, glazing bead systems, and architectural cladding.</p>
-      <p>Paired with our rubber profile range — available in EPDM, neoprene, silicone, and natural rubber — we offer a comprehensive sealing and structural system for manufacturers who demand both form and function from a single supply partner.</p>
-      <p>Our rubber profiles include simple U-channels and P-seals, as well as complex custom geometries for specific OEM sealing requirements. All rubber compounds are formulated in-house for the precise blend of flexibility, resilience, and environmental resistance required.</p>
+      <p>UPVC is rigid, stable, and dimensionally accurate — ideal for window frames, door sections, and glazing beads where the profile needs to hold its shape under load. Our UPVC extrusions are lead-free, UV-stable, and available in a range of sizes and colours.</p>
+      <p>Our rubber range covers EPDM, neoprene, silicone, and natural rubber — in standard U-channels, P-seals, D-sections, and custom geometries. Whether you need a window weatherseal or a machine gasket, we can match the right compound to your operating conditions.</p>
+      <p>We formulate rubber compounds in-house — so we're not locked into standard grades. If your application needs a specific hardness, temperature rating, or chemical resistance, we can develop a compound around your requirements.</p>
     </div>
     <div class="prod-sidebar">
       <div class="sidebar-card">
@@ -267,9 +273,9 @@ footer a { font-size:12px; color:var(--electric); text-decoration:none; }
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div id="modalForm">
-      <div class="modal-badge">🔒 Secure Access</div>
-      <h3>Download the UPVC & Rubber Catalogue</h3>
-      <p class="modal-sub">Enter your details below and we'll instantly unlock the full product catalogue with specifications, dimensions, and pricing guidelines.</p>
+      <div class="modal-badge">📥 Download Catalogue</div>
+      <h3 id="modalProductTitle">Download the Catalogue</h3>
+      <p class="modal-sub">Fill in your details below. We'll send you the catalogue and occasionally share relevant updates — no spam, ever.</p>
       <div class="form-group">
         <label>Full Name *</label>
         <input type="text" id="fname" placeholder="Your full name" required>
@@ -282,69 +288,98 @@ footer a { font-size:12px; color:var(--electric); text-decoration:none; }
         <label>Company Name *</label>
         <input type="text" id="fcompany" placeholder="Your company name" required>
       </div>
-      <button class="modal-submit" onclick="handleSubmit()">Unlock & Download Catalogue →</button>
-      <p class="modal-note">🔒 Your information is kept confidential and will only be used to follow up on your enquiry. No spam, ever.</p>
+      <div id="formError" style="display:none;color:#ff4466;font-size:13px;margin-bottom:12px;padding:10px 14px;background:rgba(255,68,102,0.08);border-radius:4px;border:1px solid rgba(255,68,102,0.25);"></div>
+      <button class="modal-submit" id="submitBtn" onclick="handleSubmit()">Unlock & Download →</button>
+      <p class="modal-note">🔒 Your details are kept confidential and used only to process your request.</p>
     </div>
     <div class="modal-success" id="modalSuccess">
       <div class="s-icon">✅</div>
-      <h4>Catalogue Unlocked!</h4>
-      <p>Thank you! Your download is starting. A member of our team may reach out shortly to assist with your requirements.<br><br>In the meantime, feel free to explore our other product categories.</p>
-      <div style="margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="#" class="btn-primary" onclick="simulateDownload()">📄 Download PDF Now</a>
-        <a href="index.html#products" class="btn-ghost">Browse Products</a>
+      <h4>Download Unlocked!</h4>
+      <p>Thank you! Your catalogue is opening now. A member of our team may be in touch to assist with your requirements.</p>
+      <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="#" class="btn-primary" id="downloadLink">📄 Download PDF</a>
+        <a href="index.html#products" class="btn-ghost">Browse All Products</a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// Cursor
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-document.addEventListener('mousemove', e => {
-  dot.style.left = e.clientX+'px'; dot.style.top = e.clientY+'px';
-  ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px';
-});
+// ── GOOGLE SHEETS LEAD CAPTURE ──
+// Replace APPS_SCRIPT_URL with your deployed Google Apps Script URL
+// Setup instructions: see below
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEzGlfHJ8BENSndK0-vjzRBtzYelzNX9lJ9PUZ7JUenEtyy7opDu3CLm_7KKFWtK4g8g/exec';
+const CATALOGUE_URL = 'https://shinemastersin.netlify.app/catalogue-upvc-rubber.pdf';
+const PRODUCT_NAME = 'UPVC & Rubber Profiles';
 
-// Canvas BG
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let W, H;
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resize(); window.addEventListener('resize', resize);
-const orbs = Array.from({length:4}, (_,i) => ({ x:Math.random()*1920, y:Math.random()*1080, r:150+Math.random()*250, vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.2, hue:[200,210,220,200][i], alpha:0.05+Math.random()*0.05 }));
-function draw() {
-  ctx.clearRect(0,0,W,H);
-  orbs.forEach(o => {
-    o.x+=o.vx; o.y+=o.vy;
-    if(o.x<-o.r)o.x=W+o.r; if(o.x>W+o.r)o.x=-o.r;
-    if(o.y<-o.r)o.y=H+o.r; if(o.y>H+o.r)o.y=-o.r;
-    const g=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
-    g.addColorStop(0,`hsla(${o.hue},100%,60%,${o.alpha})`);
-    g.addColorStop(1,'transparent');
-    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(o.x,o.y,o.r,0,Math.PI*2); ctx.fill();
-  });
-  requestAnimationFrame(draw);
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('formError').style.display = 'none';
 }
-draw();
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
 
-// Modal
-function openModal() { document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
-function handleOverlayClick(e) { if(e.target === document.getElementById('modalOverlay')) closeModal(); }
-function handleSubmit() {
+async function handleSubmit() {
   const name = document.getElementById('fname').value.trim();
   const email = document.getElementById('femail').value.trim();
   const company = document.getElementById('fcompany').value.trim();
-  if(!name || !email || !company) { alert('Please fill in all fields.'); return; }
-  if(!/\S+@\S+\.\S+/.test(email)) { alert('Please enter a valid email address.'); return; }
-  // In production, send to your CRM/backend here
-  console.log('Lead captured:', {name, email, company, product:'UPVC & Rubber Profiles', timestamp: new Date().toISOString()});
-  document.getElementById('modalForm').style.display = 'none';
-  document.getElementById('modalSuccess').style.display = 'block';
-}
-function simulateDownload() {
-  window.open('https://shinemastersind.netlify.app/catalogue-upvc-rubber.pdf', '_blank');
+  const errEl = document.getElementById('formError');
+  const btn = document.getElementById('submitBtn');
+
+  errEl.style.display = 'none';
+
+  if (!name || !email || !company) {
+    errEl.textContent = 'Please fill in all fields.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = 'Please enter a valid email address.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  const payload = {
+    name, email, company,
+    product: PRODUCT_NAME,
+    timestamp: new Date().toISOString(),
+    source: window.location.href
+  };
+
+  try {
+    // Send to Google Sheets via Apps Script
+    if (APPS_SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL_HERE') {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+    // Show success + trigger download
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+    document.getElementById('downloadLink').href = CATALOGUE_URL;
+    // Auto-open PDF
+    if (CATALOGUE_URL !== 'https://shinemastersin.netlify.app/catalogue-upvc-rubber.pdf') {
+      window.open(CATALOGUE_URL, '_blank');
+    }
+  } catch(e) {
+    // Even if sheet fails, still let them download
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+    document.getElementById('downloadLink').href = CATALOGUE_URL;
+    if (CATALOGUE_URL !== 'https://shinemastersin.netlify.app/catalogue-upvc-rubber.pdf') window.open(CATALOGUE_URL, '_blank');
+  }
 }
 </script>
 </body>
